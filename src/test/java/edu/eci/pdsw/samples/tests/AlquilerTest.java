@@ -59,17 +59,15 @@ public class AlquilerTest {
     public void CE1Test() throws ExcepcionServiciosAlquiler{
         /*ServiciosAlquiler sa=ServiciosAlquilerFactory.getInstance().getServiciosAlquiler();
         
-        Item i1=new Item(sa.consultarTipoItem(1), 55, "Los 4 Fantasticos", "Los 4 Fantásticos  es una película de superhéroes  basada en la serie de cómic homónima de Marvel.", java.sql.Date.valueOf("2005-06-08"), 2000, "DVD", "Ciencia Ficcion");        
-        sa.registrarCliente(new Cliente("Juan Perez",9843,"24234","calle 123","aa@gmail.com"));
-        sa.registrarItem(i1);
+        Item it=new Item(sa.consultarTipoItem(1), 2, "Halo 3", "Halo 3 es un videojuego de disparos en primera persona desarrollado por Bungie Studios.", java.sql.Date.valueOf("2015-03-07"), 5000, "DVD", "Ciencia Ficcion");        
+        sa.registrarCliente(new Cliente("Jefferson",10101,"7527545","Kr 1","jeffer@gmail.com"));
+        sa.registrarItem(it);
                 
-        Item item=sa.consultarItem(55);
+        Item item=sa.consultarItem(2);
+        assertTrue(true);*/
         assertTrue(true);
-        sa.registrarAlquilerCliente(java.sql.Date.valueOf("2005-12-20"), 9843, item, 5);*/
-        assertTrue(true);
-        //prueba: 3 dias de retraso
-        //assertEquals("No se calcula correctamente la multa "+ "cuando la devolucion se realiza varios dias despues del limite.",sa.valorMultaRetrasoxDia()*3,sa.consultarMultaAlquiler(55, java.sql.Date.valueOf("2005-12-28")));
-                
+        //prueba: 
+             
     }
     /**
      * Registar cliente Multa:
@@ -80,9 +78,9 @@ public class AlquilerTest {
     public void CE2Test() throws ExcepcionServiciosAlquiler{
         /*ServiciosAlquiler sa=ServiciosAlquilerFactory.getInstance().getServiciosAlquiler();
         
-        Item i2=new Item(sa.consultarTipoItem(2), 2, "Halo 3", "Halo 3 es un videojuego de disparos en primera persona desarrollado por Bungie Studios.", java.sql.Date.valueOf("2007-09-08"), 3000, "DVD", "Shooter");
-        sa.registrarCliente(new Cliente("Juan Perez",1234,"24234","calle 123","aa@gmail.com"));
-        sa.registrarItem(i2);
+        Item it=new Item(sa.consultarTipoItem(1), 2, "Halo 3", "Halo 3 es un videojuego de disparos en primera persona desarrollado por Bungie Studios.", java.sql.Date.valueOf("2015-03-07"), 5000, "DVD", "Ciencia Ficcion");        
+        sa.registrarCliente(new Cliente("Jefferson",10101,"7527545","Kr 1","jeffer@gmail.com"));
+        sa.registrarItem(it);
                 
         Item item=sa.consultarItem(2);
         assertTrue(true);
@@ -123,38 +121,36 @@ public class AlquilerTest {
      * Clases de equivalencia: 
      * CE4: Costo de items menores a 0 dias (0)
      */
-    @Test
-    public void CE4Test() throws ExcepcionServiciosAlquiler{
-        /*ServiciosAlquiler sa=ServiciosAlquilerFactory.getInstance().getServiciosAlquiler();
-        
-        Item i2=new Item(sa.consultarTipoItem(2), 3, "Halo 3", "Halo 3 es un videojuego de disparos en primera persona desarrollado por Bungie Studios.", java.sql.Date.valueOf("2007-09-08"), 3000, "DVD", "Shooter");
-        sa.registrarCliente(new Cliente("Juan Perez",1236,"24235","calle 123","aa@gmail.com"));
-        sa.registrarItem(i2);
-                
-        Item item=sa.consultarItem(3);*/
-        assertTrue(true);
-        //prueba: el costo de 0 dias
-        //assertEquals("El costo se calcula incorrectamente "+"-1 0 dias de alquiler de un item debe ser 0 en el costo",0,sa.consultarCostoAlquiler(3,-1));
-                
-    }
     
-    /**
+    
+    
+    
+    /** Registrar Alquiler a un cliente:
+     * 
      * Clases de equivalencia: 
-     * CE4: Costo de items mayores a 0 unidades (costo*unidades)
-     */
+     * CE8: El alquiler del item no es valido 
+     
+    */
     @Test
     public void CE3Test() throws ExcepcionServiciosAlquiler{
-       /*ServiciosAlquiler sa=ServiciosAlquilerFactory.getInstance().getServiciosAlquiler();
+        /*ServiciosAlquiler sa=ServiciosAlquilerFactory.getInstance().getServiciosAlquiler();
+        ExcepcionServiciosAlquiler ex=null;
+        Item i2=new Item(sa.consultarTipoItem(2), 12, "Halo 3", "Halo 3 es un videojuego de disparos en primera persona desarrollado por Bungie Studios.", java.sql.Date.valueOf("2007-09-08"), 3000, "DVD", "Shooter");
+        //prueba: 2 dias antes de la entrega
+        try{
+            
+            Item item = sa.consultarItem(0);
+            sa.registrarItem(i2);
+            sa.registrarAlquilerCliente(java.sql.Date.valueOf("2005-12-20"), 3666, item, -5);
+            assertTrue(true);
+        }catch(ExcepcionServiciosAlquiler e){
+            ex=e;
+            assertTrue(true);
+        }finally{
+           // assertEquals("El item no se registro correctamente",true,ex!=null);
+        }*/
+           assertTrue(true); 
         
-        Item i2=new Item(sa.consultarTipoItem(2), 4, "Halo 3", "Halo 3 es un videojuego de disparos en primera persona desarrollado por Bungie Studios.", java.sql.Date.valueOf("2007-09-08"), 3000, "DVD", "Shooter");
-        sa.registrarCliente(new Cliente("Juan Perez",1238,"24235","calle 123","aa@gmail.com"));
-        sa.registrarItem(i2);
-                
-        Item item=sa.consultarItem(4);*/
-        assertTrue(true);
-        //prueba: el costo de 3 unidades
-        //assertEquals("El costo se calcula incorrectamente "+"0 dias de alquiler de un item debe ser 0 en el costo",3000*3,sa.consultarCostoAlquiler(4,3));
-                
     }
     
     
@@ -169,7 +165,7 @@ public class AlquilerTest {
      */
     
     @Test
-    public void CE5Test() throws ExcepcionServiciosAlquiler{
+    public void CE4Test() throws ExcepcionServiciosAlquiler{
         /*ServiciosAlquiler sa=ServiciosAlquilerFactory.getInstance().getServiciosAlquiler();
         
         Item i2=new Item(sa.consultarTipoItem(2), 6, "Halo 3", "Halo 3 es un videojuego de disparos en primera persona desarrollado por Bungie Studios.", java.sql.Date.valueOf("2007-09-08"), 3000, "DVD", "Shooter");
@@ -184,28 +180,6 @@ public class AlquilerTest {
                 
     }
     
-    @Test
-    public void CE6Test() throws ExcepcionServiciosAlquiler{
-        /*ServiciosAlquiler sa=ServiciosAlquilerFactory.getInstance().getServiciosAlquiler();
-        ExcepcionServiciosAlquiler ex=null;
-        Item i2=new Item(sa.consultarTipoItem(2), 11, "Halo 3", "Halo 3 es un videojuego de disparos en primera persona desarrollado por Bungie Studios.", java.sql.Date.valueOf("2007-09-08"), 3000, "DVD", "Shooter");
-        Cliente c=new Cliente("Juan Perez",0000,"24235","calle 123","aa@gmail.com");
-        sa.registrarItem(i2);
-        try{
-        sa.registrarCliente(c);
-        Item item=sa.consultarItem(11);
-        assertTrue(true);
-        //prueba: Debe arrojar una excepcion
-        }catch(ExcepcionServiciosAlquiler e){
-            ex=e;
-            assertTrue(true);
-        }finally{
-            //assertEquals("El cliente no se registro correctamente",true,ex!=null);
-        }*/
-        assertTrue(true);
-                
-    }
-    
     /**
      * Registrar Alquiler a un cliente:
      * 
@@ -214,7 +188,7 @@ public class AlquilerTest {
      */
     
     @Test
-    public void CE7Test() throws ExcepcionServiciosAlquiler{
+    public void CE5Test() throws ExcepcionServiciosAlquiler{
         /*ServiciosAlquiler sa=ServiciosAlquilerFactory.getInstance().getServiciosAlquiler();
         ExcepcionServiciosAlquiler ex=null;
         Item i2=new Item(sa.consultarTipoItem(2), 0, "Halo 3", "Halo 3 es un videojuego de disparos en primera persona desarrollado por Bungie Studios.", java.sql.Date.valueOf("2007-09-08"), 3000, "DVD", "Shooter");
@@ -236,32 +210,20 @@ public class AlquilerTest {
     }
     
     
-     /** Registrar Alquiler a un cliente:
-     * 
-     * Clases de equivalencia: 
-     * CE8: El alquiler del item no es valido 
      
-    */
     @Test
-    public void CE8Test() throws ExcepcionServiciosAlquiler{
+    public void CE6Test() throws ExcepcionServiciosAlquiler{
         /*ServiciosAlquiler sa=ServiciosAlquilerFactory.getInstance().getServiciosAlquiler();
-        ExcepcionServiciosAlquiler ex=null;
-        Item i2=new Item(sa.consultarTipoItem(2), 12, "Halo 3", "Halo 3 es un videojuego de disparos en primera persona desarrollado por Bungie Studios.", java.sql.Date.valueOf("2007-09-08"), 3000, "DVD", "Shooter");
-        //prueba: 2 dias antes de la entrega
-        try{
-            
-            Item item = sa.consultarItem(0);
-            sa.registrarItem(i2);
-            sa.registrarAlquilerCliente(java.sql.Date.valueOf("2005-12-20"), 3666, item, -5);
-            assertTrue(true);
-        }catch(ExcepcionServiciosAlquiler e){
-            ex=e;
-            assertTrue(true);
-        }finally{
-           // assertEquals("El item no se registro correctamente",true,ex!=null);
-        }*/
-           assertTrue(true); 
         
+        Item i2=new Item(sa.consultarTipoItem(2), 3, "Halo 3", "Halo 3 es un videojuego de disparos en primera persona desarrollado por Bungie Studios.", java.sql.Date.valueOf("2007-09-08"), 3000, "DVD", "Shooter");
+        sa.registrarCliente(new Cliente("Juan Perez",1236,"24235","calle 123","aa@gmail.com"));
+        sa.registrarItem(i2);
+                
+        Item item=sa.consultarItem(3);*/
+        assertTrue(true);
+        //prueba: el costo de 0 dias
+        //assertEquals("El costo se calcula incorrectamente "+"-1 0 dias de alquiler de un item debe ser 0 en el costo",0,sa.consultarCostoAlquiler(3,-1));
+                
     }
     
     
