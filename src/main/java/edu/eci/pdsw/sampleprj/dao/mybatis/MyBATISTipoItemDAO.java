@@ -15,17 +15,18 @@ import java.util.List;
 
 /**
  *
- * @author OscarAlba
+ * @author Juan Villate
+ * @author Jefferson Castañeda
  */
 public class MyBATISTipoItemDAO implements TipoItemDAO{
 
     @Inject
-    private TipoItemMapper TipoItemMapper;   
+    private TipoItemMapper tipoItemMapper;   
     
     @Override
     public TipoItem load(int id) throws PersistenceException {
         try{
-            return TipoItemMapper.getTipoItem(id);
+            return tipoItemMapper.getTipoItem(id);
         }
         catch(org.apache.ibatis.exceptions.PersistenceException e){
             throw new PersistenceException("Error al consultar el item "+id,e);
@@ -36,7 +37,7 @@ public class MyBATISTipoItemDAO implements TipoItemDAO{
     @Override
     public List<TipoItem> loadAll() throws PersistenceException {
         try{
-            return TipoItemMapper.getTiposItems();
+            return tipoItemMapper.getTiposItems();
         }
         catch(org.apache.ibatis.exceptions.PersistenceException e){
             throw new PersistenceException("Error al consultar el item "+ e);

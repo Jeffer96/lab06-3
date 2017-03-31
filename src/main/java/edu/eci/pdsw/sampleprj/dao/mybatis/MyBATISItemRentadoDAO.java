@@ -16,7 +16,8 @@ import java.util.List;
 
 /**
  *
- * @author OscarAlba
+ * @author Juan Villate
+ * @author Jefferson Castañeda
  */
 public class MyBATISItemRentadoDAO implements ItemRentadoDAO{
     @Inject

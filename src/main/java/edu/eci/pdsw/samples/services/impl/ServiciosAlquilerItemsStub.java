@@ -23,8 +23,7 @@ import java.util.Map;
  */
 public class ServiciosAlquilerItemsStub implements ServiciosAlquiler {
     
-    private static final int MULTA_DIARIA=5000;
-    private final static long MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000;
+    private static final int multaDia=5000;
     
     private final Map<Long,Cliente> clientes;
     private final Map<Integer,Item> itemsDisponibles;
@@ -193,7 +192,7 @@ public class ServiciosAlquilerItemsStub implements ServiciosAlquiler {
             LocalDate fechaMinimaEntrega=ir.getFechafinrenta().toLocalDate();
             LocalDate fechaEntrega=fechaDevolucion.toLocalDate();
             long diasRetraso = ChronoUnit.DAYS.between(fechaMinimaEntrega, fechaEntrega);
-            return diasRetraso*MULTA_DIARIA;
+            return diasRetraso*multaDia;
         }
     }
 
@@ -226,7 +225,7 @@ public class ServiciosAlquilerItemsStub implements ServiciosAlquiler {
 
     @Override
     public int valorMultaRetrasoxDia() {
-        return MULTA_DIARIA;
+        return multaDia;
     }
 
    

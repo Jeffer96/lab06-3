@@ -96,6 +96,15 @@
         WHERE ir.CLIENTES_documento=#{idcli} and ir.ITEMS_id=i.id;
     
      </select>
+     
+     <insert parameterType="map" id="agregarItemRentadoACliente" >
+        insert into VI_ITEMRENTADO (id,CLIENTES_documento,ITEMS_id,fechainiciorenta,fechafinrenta) values (#{iditem},#{idcli},#{iditem},#{Inicio},#{Fin});
+    </insert>
+    
+    <insert parameterType="map" id="agregarCliente" >
+        insert into VI_CLIENTES (documento,nombre,telefono,direccion,email,vetado) values (#{cli.documento},#{cli.nombre},#{cli.telefono},#{cli.direccion},#{cli.email},#{cli.vetado});
+    </insert>
+    
      <resultMap type='Cliente' id='ClienteResult'>
         <id property='nombre' column='nombre'/>
         <result property='documento' column='documento'/>
@@ -106,13 +115,7 @@
         <collection property='rentados' ofType='ItemRentado' columnPrefix='IR_' resultMap='edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ItemMapper.ItemRentadoResult'></collection>
     </resultMap>
         
-    <insert parameterType="map" id="agregarItemRentadoACliente" >
-        insert into VI_ITEMRENTADO (id,CLIENTES_documento,ITEMS_id,fechainiciorenta,fechafinrenta) values (#{iditem},#{idcli},#{iditem},#{Inicio},#{Fin});
-    </insert>
     
-    <insert parameterType="map" id="agregarCliente" >
-        insert into VI_CLIENTES (documento,nombre,telefono,direccion,email,vetado) values (#{cli.documento},#{cli.nombre},#{cli.telefono},#{cli.direccion},#{cli.email},#{cli.vetado});
-    </insert>
     
         
 </mapper>

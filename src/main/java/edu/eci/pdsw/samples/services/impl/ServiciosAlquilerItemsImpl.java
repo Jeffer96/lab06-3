@@ -23,15 +23,15 @@ import java.util.logging.Logger;
 
 /**
  * 
- * @author Oscar Alba
- * @author Laura Ramos
+ * @author Juan Villate
+ * @author Jefferson Castañeda
  */
 
 @Singleton
 public class ServiciosAlquilerItemsImpl implements ServiciosAlquiler {
     
-    private static final int MULTA_DIARIA=5000;
-    private final static long MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000;
+    private static final int multaDia=5000;
+    
     
     public ServiciosAlquilerItemsImpl() {
         
@@ -103,23 +103,11 @@ public class ServiciosAlquilerItemsImpl implements ServiciosAlquiler {
     @Override
     public long consultarMultaAlquiler(ItemRentado iditem, Date fechaDevolucion) throws ExcepcionServiciosAlquiler {
         
-        /*
-        ItemRentado ir = daoItemRentado.load(iditem);
-        System.out.println(ir.getId()+"144444");
-        if(ir == null){
-        throw new ExcepcionServiciosAlquiler("El item "+iditem+"no esta en alquiler");
-        }else{
-        LocalDate fechaMinimaEntrega = ir.getFechafinrenta().toLocalDate();
-        LocalDate fechaEntrega = fechaDevolucion.toLocalDate();
-        long diasRetraso = ChronoUnit.DAYS.between(fechaMinimaEntrega, fechaEntrega);
-        total=diasRetraso * MULTA_DIARIA;
-        
-        }*/
         LocalDate fechaMinimaEntrega = iditem.getFechafinrenta().toLocalDate();
         LocalDate fechaEntrega = fechaDevolucion.toLocalDate();
         long diasRetraso = ChronoUnit.DAYS.between(fechaMinimaEntrega, fechaEntrega);
-        if( diasRetraso * MULTA_DIARIA>0){
-            return diasRetraso * MULTA_DIARIA;}
+        if( diasRetraso * multaDia>0){
+            return diasRetraso * multaDia;}
         else{
             return 0;}
     }
@@ -171,11 +159,7 @@ public class ServiciosAlquilerItemsImpl implements ServiciosAlquiler {
         }
     }
 
-    @Override
-    public void registrarDevolucion(int iditem) throws ExcepcionServiciosAlquiler {
-        //NULL
-    }
-
+    
     @Override
     public long consultarCostoAlquiler(int iditem, int numdias) throws ExcepcionServiciosAlquiler {
         long total = 0;
@@ -192,21 +176,25 @@ public class ServiciosAlquilerItemsImpl implements ServiciosAlquiler {
     }
 
     @Override
+    public void registrarDevolucion(int iditem) throws ExcepcionServiciosAlquiler {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
     public void actualizarTarifaItem(int id, long tarifa) throws ExcepcionServiciosAlquiler {
-        //No estan en el Bean
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void registrarItem(Item i) throws ExcepcionServiciosAlquiler {
-        //No estan en el Bean
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
 
     @Override
     public void vetarCliente(long docu, int estado) throws ExcepcionServiciosAlquiler {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
+
+      
     
 }

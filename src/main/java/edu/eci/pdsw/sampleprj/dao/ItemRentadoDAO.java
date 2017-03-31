@@ -12,7 +12,8 @@ import java.util.List;
 
 /**
  *
- * @author OscarAlba
+ * @author Juan Villate
+ * @author Jefferson Castañeda
  */
 public interface ItemRentadoDAO {
     
